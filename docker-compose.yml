@@ -1,0 +1,24 @@
+###############################################################################
+#                          Logstash Full Environment                          #
+###############################################################################
+version: '3.9'
+
+services:
+
+    logstash:
+        container_name: ${LOGSTASH_SERVER_NAME}
+        build: ./docker
+        restart: unless-stopped
+        volumes:
+            - '${LOGSTASH_CONFIG_FILE}:/usr/share/logstash/config/logstash.yml:ro,Z'
+            - '${LOGSTASH_PIPELINE_VOLUME}:/usr/share/logstash/pipeline:ro,Z'
+            - '${LOGSTASH_LOGS_VOLUME}:/usr/share/logstash/logs'
+        ports:
+            - "${LOGSTASH_EXTERNAL_UDP_PORT}:${LOGSTASH_UDP_PORT}/udp"
+        environment:
+            LS_JAVA_OPTS: -Xms512m -Xmx512m
+            LOGSTASH_ELASTICSEARCH_HOST_URL: ${LOGSTASH_ELASTICSEARCH_HOST_URL}
+            LOGSTASH_INTERNAL_USER: ${LOGSTASH_INTERNAL_USER}
+            LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD}
+            LOGSTASH_UDP_PORT: ${LOGSTASH_UDP_PORT}
+            LOGSTASH_BEATS_PORT: ${LOGSTASH_BEATS_PORT}
