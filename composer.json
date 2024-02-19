@@ -1,0 +1,20 @@
+{
+    "name": "myoriginalcodes/logstash-docker-standalone",
+    "version": "0.0.1-dev",
+    "description": "PHP fpm docker container",
+    "keywords": ["logstash", "elk", "elk stack", "docker"],
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Edson Nascimento",
+            "email": "theoriginal@myoriginalcodes.com",
+            "role": "developer",
+            "homepage": "https://myoriginalcodes.com"
+        }
+    ],
+    "support": {
+        "email": "theoriginal@myoriginalcodes.com"
+    },
+    "minimum-stability": "stable"
+}
